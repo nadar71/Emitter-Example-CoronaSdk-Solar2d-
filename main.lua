@@ -136,13 +136,14 @@ local emitterParams_02 = {
 
 
 
--- Explosion 
+-- Explosion : fire
 local emitterParams_03 = {
 
     -- EMITTER : GENERAL 
     --------------------
     -- state        
-    textureFileName = "fire.png",
+    -- textureFileName = "img/polygons/3.png",
+    textureFileName = "img/fire/fire.png",
     maxParticles = 256,
     angle = -360,
     angleVariance = -360,
@@ -159,8 +160,8 @@ local emitterParams_03 = {
     -- sourcePositionVariancey = -20,	
     -- gravityx = -1                   
     gravityy = -1,                    
-    radialAcceleration = 100,         
-    radialAccelVariance = 50,        
+    radialAcceleration = 10,         
+    radialAccelVariance = 5,        
     -- tangentialAcceleration = -144.74,	
     -- tangentialAccelVariance = -92.11,
 
@@ -170,25 +171,25 @@ local emitterParams_03 = {
     -- EMITTER : RADIAL
     --------------------
     -- maxRadius
-    maxRadiusVariance = 200.63,
+    maxRadiusVariance = 10.63,
     -- minRadius
     -- minRadiusVariance
-    -- rotatePerSecond
-    rotatePerSecondVariance = 153.95,
+    rotatePerSecond = 15,
+    rotatePerSecondVariance = 1,
 
     
     -- PARTICLES : GENERAL
     -----------------------
-    particleLifespan = 1,             
+    particleLifespan = 0.1,             
     -- particleLifespanVariance	
     startParticleSize = 1,           
     startParticleSizeVariance = 5,	
     finishParticleSize = 10,          
     finishParticleSizeVariance = 10,	
-    -- rotationStart               
-    -- rotationStartVariance	
-    -- rotationEnd                 
-    -- rotationEndVariance
+    rotationStart = 50,              
+    rotationStartVariance = 5,	
+    rotationEnd = 50,                 
+    rotationEndVariance = 5,
     
     
     -- COLOR ALPHA   
@@ -202,9 +203,112 @@ local emitterParams_03 = {
     -- startColorVarianceBlue
     startColorVarianceAlpha = 1,
     finishColorRed = 1,
-    finishColorGreen = 0.5443883,    
-    finishColorBlue = 0.3699196,
+    -- finishColorGreen = 0.5443883,    
+    -- finishColorBlue = 0.3699196,
     -- finishColorAlpha
+    -- finishColorVarianceRed
+    -- finishColorVarianceGreen
+    -- finishColorVarianceBlue
+    -- finishColorVarianceAlpha
+    
+    
+    -- BLEND MODES
+    ---------------
+    blendFuncSource = 770,
+    blendFuncDestination = 1,
+    
+    
+    -- OTHER
+    ---------
+    yCoordFlipped = -1
+    
+    
+    --[[
+    Value	Blend Operation
+        0	GL_ZERO
+        1	GL_ONE
+        774	GL_DST_COLOR
+        775	GL_ONE_MINUS_DST_COLOR
+        770	GL_SRC_ALPHA
+        771	GL_ONE_MINUS_SRC_ALPHA
+        772	GL_DST_ALPHA
+        773	GL_ONE_MINUS_DST_ALPHA
+        776	GL_SRC_ALPHA_SATURATE
+        768	GL_SRC_COLOR
+        769	GL_ONE_MINUS_SRC_COLOR
+    --]]
+    
+    
+}
+-- explosions with polygons
+local emitterParams_04 = {
+
+    -- EMITTER : GENERAL 
+    --------------------
+    -- state        
+    textureFileName = "img/polygons/3.png",
+    maxParticles = 350,
+    angle = -360,
+    angleVariance = -360,
+    emitterType = 2, -- 0: from Point/Line/Field  1:Radial
+    -- absolutePosition
+    duration = 0.1,
+
+
+    -- EMITTER : Point/Line/Field
+    -------------------------------
+    speed = 125,
+    speedVariance = 50,               
+    -- sourcePositionVariancex = -10,	
+    -- sourcePositionVariancey = -20,	
+    -- gravityx = -1                   
+    gravityy = -1,                    
+    radialAcceleration = 10,         
+    radialAccelVariance = 10,        
+    tangentialAcceleration = 100,	
+    tangentialAccelVariance = 100,
+
+
+    
+    
+    -- EMITTER : RADIAL
+    --------------------
+    maxRadius = 15,
+    -- maxRadiusVariance = 100.63,
+    -- minRadius
+    -- minRadiusVariance
+    rotatePerSecond = 15,
+    rotatePerSecondVariance = 15,
+
+    
+    -- PARTICLES : GENERAL
+    -----------------------
+    particleLifespan = .9,             
+    particleLifespanVariance = 0.5,	
+    startParticleSize = 1,           
+    startParticleSizeVariance = 5,	
+    finishParticleSize = 10,          
+    finishParticleSizeVariance = 10,	
+    rotationStart = 0,              
+    rotationStartVariance = 360,	
+    rotationEnd = 0,                 
+    rotationEndVariance = 360,
+    
+    
+    -- COLOR ALPHA   
+    ---------------
+    startColorRed = 1,
+    -- startColorBlue
+    -- startColorGreen = 0.3031555,
+    startColorAlpha = 1,
+    -- startColorVarianceRed
+    -- startColorVarianceGreen
+    -- startColorVarianceBlue
+    -- startColorVarianceAlpha = 1,
+    finishColorRed = 1,
+    -- finishColorGreen = 0.5443883,    
+    -- finishColorBlue = 0.3699196,
+    finishColorAlpha = 1,
     -- finishColorVarianceRed
     -- finishColorVarianceGreen
     -- finishColorVarianceBlue
@@ -241,7 +345,7 @@ local emitterParams_03 = {
 }
  
 -- Create the emitter
-local emitter = display.newEmitter( emitterParams_03 )
+local emitter = display.newEmitter( emitterParams_04 )
  
 -- Center the emitter within the content area
 emitter.x = display.contentCenterX
